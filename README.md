@@ -66,12 +66,13 @@ within the directory of whichever model you want to train. When either model fin
 
 ### The single object model
 
-The single object model is composed of a video encoder, a question encoder, and a merge module that combines the outputs from the video and question encoder.
+The single object model, found in the `singleObjectModel` directory, is composed of a video encoder, a question encoder, and a merge module that combines the outputs from the video and question encoder.
 The video encoder is a CNN that is composed of alternating Conv3D and MaxPooling3D layers, from which the result is flattened and passed through a Dense layer to obtain the video embedding of length 32. Additionally, a Dropout layer that drops 40% of the outputs from the Dense layer is necessary to reduce overfitting.
 The question encoder takes the question about the video as a bag-of-words and feeds it through two Dense layers to get the question embedding of length 32.
-These two embeddings are then merged through element-wise multiplication before being pased through two more Dense layers with the final layer having the softmax activation function that provides the final output of the network.
+These two embeddings are then merged through element-wise multiplication before being pased through two more Dense layers with the final layer using the softmax activation function that provides the final output of the network.
 This model is capable of achieving an accuracy of ~95%.
 
 ### The object attention model
 
-
+The object attention model, found in the `objAttModel` directory, is trained on a dataset of videos with two shapes in each video rather than just one. The questions in this dataset always refer to just one of the shapes in a video and thus require the model to be able to discern which shape the question is asking about before answering the question. The two shapes in any given video will have a different shape and color and move in a different direction from each other.
+This added complexity requires a different model to be able to accurately answer the questions in the dataset. That model is the object attention model. This model first assumes that the video input is passed through an object detector that perfectly segments the two shapes in each video. The input to this model is then two videos, each with one of the shapes unchanged and the other shape removed. The input to the model is the two videos, one for each object, and the question represented as a bag-of words. The object attention model reuses the video and question encoder modules from the single object model to get an embedding for each of the videos and the question.
