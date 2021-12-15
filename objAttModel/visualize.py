@@ -144,6 +144,3 @@ def log_to_plots(filename='model_log.csv'):
     plt.xlabel('Epoch')
     plt.legend(['train', 'test'], loc='upper left')
     plt.savefig('model_accuracy.png')
-    
-
-log_to_plots()

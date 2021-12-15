@@ -22,7 +22,6 @@ train_X_first_objects, train_X_second_objects, train_X_seqs, train_Y, test_X_fir
 
 print('\n--- Building model...')
 model = build_model(vid_shape, vocab_size, num_answers)
-model.summary()
 checkpoint = ModelCheckpoint('model.h5', save_best_only=True)
 es = EarlyStopping(monitor='val_loss', mode='min', patience=5)
 csv_logger = CSVLogger('model_log.csv', append=False) # set append=True if continuing training
