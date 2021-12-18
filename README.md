@@ -98,16 +98,16 @@ project
 │   └───data
 │   │   │   answers.txt
 │   │   └───train
-│   │   |   |   questions.json
-│   │   |   └───videos
+│   │   │   │   questions.json
+│   │   │   └───videos
 │   │   │   │   │   0.gif
 │   │   │   │   │   1.gif
 │   │   │   │   │   2.gif
 │   │   │   │   │   ...
 │   │   │  
 │   │   └───test
-│   │   |   |   questions.json
-│   │   |   └───videos
+│   │   │   │   questions.json
+│   │   │   └───videos
 │   │   │   │   │   0.gif
 │   │   │   │   │   1.gif
 │   │   │   │   │   2.gif
@@ -126,7 +126,7 @@ project
 │   └───data
 │   │   │   answers.txt
 │   │   └───train
-│   │   │   |   questions.json
+│   │   │   │   questions.json
 │   │   │   └───videos
 │   │   │   │   └───video0
 │   │   │   │   │   │   0.gif
