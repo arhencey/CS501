@@ -78,3 +78,71 @@ The object attention model, found in the `objAttModel` directory, is trained on 
 This added complexity requires a different model to be able to accurately answer the questions in the dataset. That model is the object attention model. This model first assumes that the video input is passed through an object detector that perfectly segments the two shapes in each video. The input to this model is then two videos, each with one of the shapes unchanged and the other shape removed. The input to the model is the two videos, one for each object, and the question represented as a bag-of words.
 The object attention model reuses the video and question encoder modules from the single object model to get an embedding for each of the videos and the question. The video embeddings are then seperately combined with the question embedding via element-wise multiplication. The combined question and video embeddings are then run through a series of dense layers with the last dense layer being a single neuron with the sigmoid activation function. The output of this neuron corresponds to a ”score”, or how likely it is that the question is asking about that particular video. These scores are then multiplied by their corresponding video embedding obtained previously. The idea is that the video/object that the question is asking about should have a score close to 1, so multiplying its embedding by the score should not change the values very much, and the video/object that the question is not asking about should have a score close to 0, so the values in its embedding should become very low. After the video embeddings have been multiplied by their corresponding scores they are then combined using element-wise addition. This vector is then combined with the question embedding obtained previously via element-wise multiplication before being passed through a dense layer of 32 neurons and then finally a softmax layer, which is the final output of the model. The structure of the object attention model is diagrammed below:
 ![](./obj_att_model.png)
+
+## Project Structure
+```
+project
+│   README.md
+│   obj_att_model.png
+│
+└───singleObjectModel
+│   │   model.py
+│   │   prepare_data.py
+│   │   train.py
+│   │   etc
+│   │
+│   └───gen_data
+│   │   │   generate_data.py
+│   │   │   etc
+│   │   │  
+│   └───data
+│   │   │   answers.txt
+|   │   └───train
+|   │   |   |   questions.json
+|   │   |   └───videos
+|   │   │   │   │   0.gif
+|   │   │   │   │   1.gif
+|   │   │   │   │   2.gif
+|   │   │   │   │   ...
+│   │   │  
+|   │   └───test
+|   │   |   |   questions.json
+|   │   |   └───videos
+|   │   │   │   │   0.gif
+|   │   │   │   │   1.gif
+|   │   │   │   │   2.gif
+|   │   │   │   │   ...
+│   
+└───objAttModel
+│   │   model.py
+│   │   prepare_data.py
+│   │   train.py
+│   │   etc
+│   │
+│   └───gen_data
+│   │   │   generate_data.py
+│   │   │   etc
+│   │   │  
+│   └───data
+│   │   │   answers.txt
+|   │   └───train
+|   │   |   |   questions.json
+|   │   |   └───videos
+|   │   │   │   └───video0
+|   │   │   │   │   |   0.gif
+|   │   │   │   │   |   1.gif
+|   │   │   │   └───video1
+|   │   │   │   └───video2
+|   │   │   │   ...
+│   │   │  
+|   │   └───test
+|   │   |   |   questions.json
+|   │   |   └───videos
+|   │   │   │   └───video0
+|   │   │   │   │   |   0.gif
+|   │   │   │   │   |   1.gif
+|   │   │   │   └───video1
+|   │   │   │   └───video2
+|   │   │   │   ...
+│   
+```
