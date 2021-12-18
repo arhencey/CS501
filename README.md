@@ -97,21 +97,21 @@ project
 │   │   │  
 │   └───data
 │   │   │   answers.txt
-|   │   └───train
-|   │   |   |   questions.json
-|   │   |   └───videos
-|   │   │   │   │   0.gif
-|   │   │   │   │   1.gif
-|   │   │   │   │   2.gif
-|   │   │   │   │   ...
+│   │   └───train
+│   │   |   |   questions.json
+│   │   |   └───videos
+│   │   │   │   │   0.gif
+│   │   │   │   │   1.gif
+│   │   │   │   │   2.gif
+│   │   │   │   │   ...
 │   │   │  
-|   │   └───test
-|   │   |   |   questions.json
-|   │   |   └───videos
-|   │   │   │   │   0.gif
-|   │   │   │   │   1.gif
-|   │   │   │   │   2.gif
-|   │   │   │   │   ...
+│   │   └───test
+│   │   |   |   questions.json
+│   │   |   └───videos
+│   │   │   │   │   0.gif
+│   │   │   │   │   1.gif
+│   │   │   │   │   2.gif
+│   │   │   │   │   ...
 │   
 └───objAttModel
 │   │   model.py
@@ -125,24 +125,24 @@ project
 │   │   │  
 │   └───data
 │   │   │   answers.txt
-|   │   └───train
-|   │   |   |   questions.json
-|   │   |   └───videos
-|   │   │   │   └───video0
-|   │   │   │   │   |   0.gif
-|   │   │   │   │   |   1.gif
-|   │   │   │   └───video1
-|   │   │   │   └───video2
-|   │   │   │   ...
+│   │   └───train
+│   │   │   |   questions.json
+│   │   │   └───videos
+│   │   │   │   └───video0
+│   │   │   │   │   │   0.gif
+│   │   │   │   │   │   1.gif
+│   │   │   │   └───video1
+│   │   │   │   └───video2
+│   │   │   │   ...
 │   │   │  
-|   │   └───test
-|   │   |   |   questions.json
-|   │   |   └───videos
-|   │   │   │   └───video0
-|   │   │   │   │   |   0.gif
-|   │   │   │   │   |   1.gif
-|   │   │   │   └───video1
-|   │   │   │   └───video2
-|   │   │   │   ...
+│   │   └───test
+│   │   │   │   questions.json
+│   │   │   └───videos
+│   │   │   │   └───video0
+│   │   │   │   │   │   0.gif
+│   │   │   │   │   │   1.gif
+│   │   │   │   └───video1
+│   │   │   │   └───video2
+│   │   │   │   ...
 │   
 ```
